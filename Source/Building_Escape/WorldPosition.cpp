@@ -20,22 +20,19 @@ void UWorldPosition::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//FString Log = "Hello!";
-	//FString* PtrLog = &Log;
+	FString ObjectName;
+	FString ObjectPosition;
 
-	//Log.Len();
-
-	//PtrLog->Len();
-
-	//UE_LOG(LogTemp, Warning, TEXT("%s"), **PtrLog);
+	ObjectName = GetOwner()->GetName();
 	
-	//GetOwner()->GetName();
+	//Get Actor Position
+	UE_LOG(LogTemp, Warning, TEXT("First way to get Actor Location"));
+	ObjectPosition = GetOwner()->GetActorLocation().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("The location of %s is: %s"), *ObjectName, *ObjectPosition);
 
-	//FString ObjectName = GetOwner()->GetName();
-	//FString* PtrObjectName = &ObjectName;
-
-	//UE_LOG(LogTemp, Warning, TEXT("This is component: %s"), *ObjectName);
-	UE_LOG(LogTemp, Warning, TEXT("This is component: %s"), *GetOwner()->GetName());
+	UE_LOG(LogTemp, Warning, TEXT("Second way to get Actor Location"));
+	ObjectPosition = GetOwner()->GetTransform().GetLocation().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("The location of %s is: %s"), *ObjectName, *ObjectPosition);
 	
 }
 
